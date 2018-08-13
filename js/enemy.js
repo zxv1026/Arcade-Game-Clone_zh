@@ -2,9 +2,16 @@
 var Enemy = function () {
     // 要应用到每个敌人的实例的变量写在这里
     // 我们已经提供了一个来帮助你实现更多
+    this.iscollision = testCollision;
     this.reset();
     // 敌人的图片，用一个我们提供的工具函数来轻松的加载文件
     this.sprite = 'images/enemy-bug.png';
+    //当检查玩家和虫子的碰撞，虫子的位置
+    if(this.iscollision){
+        this.x = COL_WIDTH * 2;
+        this.y = ROW_WIDTH * 3;
+        this.speed = 0;
+    }
 };
 //初始化Enemy的位置和速度和重置Enemy的位置和速度
 Enemy.prototype.reset = function () {

@@ -1,13 +1,12 @@
 // 现在实现你自己的玩家类
 // 这个类需要一个 update() 函数， render() 函数和一个 handleInput()函数
 var Player = function () {
-    this.x = COL_WIDTH * 2;
-    this.y = ROW_WIDTH * 5;
+    this.reset();
     this.sprite = 'images/char-boy.png';
 };
 //更新玩家相关数据
 Player.prototype.update = function () {
-
+    this.isConficted(allEnemies);
 };
 //渲染玩家相关数据
 Player.prototype.render = function () {
@@ -43,4 +42,19 @@ Player.prototype.handleInput = function (Keys) {
         default:
             break;
     }
+};
+//检查碰撞
+Player.prototype.isConficted = function (enemies) {
+    for (const enemy of enemies) {
+        if(this.y == enemy.y){
+            if (Math.abs(this.x - enemy.x) < 80){
+                this.reset();
+            }
+        }
+    }
+};
+//初始化和重置人物的位置
+Player.prototype.reset = function () {
+    this.x = COL_WIDTH * 2;
+    this.y = ROW_WIDTH * 5;
 };

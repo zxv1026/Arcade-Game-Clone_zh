@@ -1,7 +1,7 @@
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
 // 把玩家对象放进一个叫 player 的变量里面
-var allEnemies = [new Enemy()];
+var allEnemies = [new Enemy(), new Enemy(), new Enemy(), new Enemy(), new Enemy()];
 var player = new Player();
 // 这段代码监听游戏玩家的键盘点击事件并且代表将按键的关键数字送到 Player.handleInput()
 // 方法里面。你不需要再更改这段代码了。

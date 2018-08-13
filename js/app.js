@@ -1,8 +1,13 @@
+var COL_WIDTH = 101;
+var ROW_WIDTH = 83;
+var numRow = 6;
+var numCol = 5;
 // 这是我们的玩家要躲避的敌人 
 var Enemy = function() {
     // 要应用到每个敌人的实例的变量写在这里
     // 我们已经提供了一个来帮助你实现更多
-
+    this.x = COL_WIDTH * 2;
+    this.y = ROW_WIDTH * 3;
     // 敌人的图片，用一个我们提供的工具函数来轻松的加载文件
     this.sprite = 'images/enemy-bug.png';
 };
@@ -21,13 +26,28 @@ Enemy.prototype.render = function() {
 
 // 现在实现你自己的玩家类
 // 这个类需要一个 update() 函数， render() 函数和一个 handleInput()函数
+var Player = function () {
+    this.x = COL_WIDTH * 2;
+    this.y = ROW_WIDTH * 5;
+    this.sprite = 'images/char-boy.png';
+};
+//更新玩家相关数据
+Player.prototype.update = function () {
+    
+};
+//渲染玩家相关数据
+Player.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
-
+Player.prototype.handleInput = function () {
+    
+};
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
 // 把玩家对象放进一个叫 player 的变量里面
-
-
+var allEnemies = [new Enemy()];
+var player = new Player();
 // 这段代码监听游戏玩家的键盘点击事件并且代表将按键的关键数字送到 Player.handleInput()
 // 方法里面。你不需要再更改这段代码了。
 document.addEventListener('keyup', function(e) {

@@ -34,7 +34,9 @@ Player.prototype.handleInput = function (Keys) {
             if (this.x < 0) {
                 this.x = 0;
                 //防止玩家超出最左边边界还加上分数
-                this.score -= 1;
+                if (this.y < ROW_WIDTH * (numRow - 1)){
+                    this.score -= 1;
+                }
             }
             break;
         case 'right':
@@ -42,7 +44,9 @@ Player.prototype.handleInput = function (Keys) {
             if (this.x > COL_WIDTH * (numCol - 1)) {
                 this.x = COL_WIDTH * (numCol - 1);
                 //防止玩家超出最右边边界还加上分数
-                this.score -= 1;
+                if (this.y < ROW_WIDTH * (numRow - 1)){
+                    this.score -= 1;
+                }
             }
             break;
         case 'up':

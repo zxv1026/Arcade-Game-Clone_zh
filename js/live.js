@@ -18,3 +18,7 @@ Live.prototype.collidingInsects = function () {
         alert("游戏结束");
     }
 };
+//玩家吃到爱心
+Live.prototype.receiveHeart = function () {
+    this.live += 1;
+}

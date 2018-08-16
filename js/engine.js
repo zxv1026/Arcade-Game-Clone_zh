@@ -122,7 +122,9 @@ var Engine = (function(global) {
         allObstacle.forEach(function (obstacle) {
             obstacle.render();
         });
-        treasure.render();
+        allTreasure.forEach(function (treasure) {
+            treasure.render();
+        });
         player.render();
         score.render();
         live.render();

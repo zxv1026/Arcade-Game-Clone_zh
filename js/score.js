@@ -28,4 +28,24 @@ Score.prototype.collidingInsects = function () {
     if(this.score<0){
         this.score = 0;
     }
-}
+};
+//玩家吃到钥匙
+Score.prototype.receiveKey = function () {
+    this.score += 3;
+};
+//玩家吃到蓝宝石
+Score.prototype.receiveGemBlue = function () {
+    this.score += 3;
+};
+//玩家吃到绿宝石
+Score.prototype.receiveGemGreen = function () {
+    this.score += 3;
+};
+//玩家吃到黄宝石
+Score.prototype.receiveGemOrange = function () {
+    this.score += 3;
+};
+//玩家吃到星
+Score.prototype.receiveStar = function () {
+    this.score += 3;
+};

@@ -6,6 +6,7 @@ var Player = function () {
 };
 //更新玩家相关数据
 Player.prototype.update = function () {
+    this.isConficted_T(allTreasure);
     this.isConficted(allEnemies);
     x = this.x;
     y = this.y;
@@ -90,6 +91,30 @@ Player.prototype.isConficted_O = function (obstacles) {
         }
     }
     return false;
+};
+//检查与宝物的碰撞
+Player.prototype.isConficted_T = function (allTreasure) {
+    for (let i=0;i<allTreasure.length;i++) {
+        if (this.y == allTreasure[i].y) {
+            if (Math.abs(this.x - allTreasure[i].x) < 80) {
+                if (allTreasure[i].id == 0) {
+                    live.receiveHeart();
+                } else if (allTreasure[i].id == 1) {
+                    score.receiveKey();
+                } else if (allTreasure[i].id == 2) {
+                    score.receiveGemBlue();
+                } else if (allTreasure[i].id == 3) {
+                    score.receiveGemGreen();
+                } else if (allTreasure[i].id == 4) {
+                    score.receiveGemOrange();
+                } else if (allTreasure[i].id == 5) {
+                    score.receiveStar();
+                }
+                position[allTreasure[i].y / ROW_WIDTH][allTreasure[i].x / COL_WIDTH] = true;
+                allTreasure.splice(i, 1);
+            }
+        }
+    }
 };
 //初始化和重置人物的位置
 Player.prototype.reset = function () {

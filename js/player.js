@@ -28,7 +28,7 @@ Player.prototype.handleInput = function (Keys) {
                 this.x = 0;
                 //防止玩家超出最左边边界还加上分数
                 if (this.y < ROW_WIDTH * (numRow - 1)){
-                    score.leftmostOrRightmost();
+                    score.minusPoints();
                 }
             }
             break;
@@ -38,7 +38,7 @@ Player.prototype.handleInput = function (Keys) {
                 this.x = COL_WIDTH * (numCol - 1);
                 //防止玩家超出最右边边界还加上分数
                 if (this.y < ROW_WIDTH * (numRow - 1)){
-                    score.leftmostOrRightmost();
+                    score.minusPoints();
                 }
             }
             break;
@@ -63,7 +63,7 @@ Player.prototype.handleInput = function (Keys) {
         this.x = lastx;
         this.y = lasty;
         //防止玩家与障碍物碰撞还继续加分数
-        score.leftmostOrRightmost();
+        score.minusPoints();
     }
     if (this.x >= 0 && this.x <= COL_WIDTH * (numCol - 1) 
     && this.y >0 && this.y < ROW_WIDTH * (numRow - 1) ) {

@@ -13,8 +13,8 @@ Score.prototype.render = function () {
 Score.prototype.personageMovement = function () {
     this.score += 1;
 };
-//
-Score.prototype.leftmostOrRightmost = function () {
+//防止玩家在不加分的情况下加分
+Score.prototype.minusPoints = function () {
     this.score -= 1;
 }
 //到达河流后，分数改变

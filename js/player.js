@@ -7,6 +7,8 @@ var Player = function () {
 //更新玩家相关数据
 Player.prototype.update = function () {
     this.isConficted(allEnemies);
+    x = this.x;
+    y = this.y;
 };
 //渲染玩家相关数据
 Player.prototype.render = function () {

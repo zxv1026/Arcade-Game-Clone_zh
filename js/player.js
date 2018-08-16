@@ -8,8 +8,6 @@ var Player = function () {
 Player.prototype.update = function () {
     this.isConficted_T(allTreasure);
     this.isConficted(allEnemies);
-    x = this.x;
-    y = this.y;
 };
 //渲染玩家相关数据
 Player.prototype.render = function () {
@@ -70,6 +68,8 @@ Player.prototype.handleInput = function (Keys) {
     && this.y >0 && this.y < ROW_WIDTH * (numRow - 1) ) {
         score.personageMovement();
     }
+    x = this.x;
+    y = this.y;
 };
 //检查碰撞
 Player.prototype.isConficted = function (enemies) {

@@ -19,6 +19,8 @@ Player.prototype.handleInput = function (Keys) {
     if(!Keys){
         return ;
     }
+    var lastx = this.x;
+    var lasty = this.y;
     switch (Keys) {
         case 'left':
             this.x -= COL_WIDTH;
@@ -57,6 +59,12 @@ Player.prototype.handleInput = function (Keys) {
         default:
             return;
     }
+    if (this.isConficted_O(allObstacle)) {
+        this.x = lastx;
+        this.y = lasty;
+        //防止玩家与障碍物碰撞还继续加分数
+        score.leftmostOrRightmost();
+    }
     if (this.x >= 0 && this.x <= COL_WIDTH * (numCol - 1) 
     && this.y >0 && this.y < ROW_WIDTH * (numRow - 1) ) {
         score.personageMovement();
@@ -73,6 +81,15 @@ Player.prototype.isConficted = function (enemies) {
             }
         }
     }
+};
+//检查与障碍物的碰撞
+Player.prototype.isConficted_O = function (obstacles) {
+    for (const obstacle of obstacles) {
+        if (this.y == obstacle.y && this.x == obstacle.x) {
+            return true;
+        }
+    }
+    return false;
 };
 //初始化和重置人物的位置
 Player.prototype.reset = function () {

@@ -1,5 +1,5 @@
 var Live = function () {
-    this.live = 3;
+    this.reset();
     this.sprite = 'images/Heart.png';
 };
 //渲染玩家相关数据
@@ -11,11 +11,13 @@ Live.prototype.render = function () {
     }
 };
 //玩家与虫子碰撞，生命改变
-Live.prototype.collidingInsects = function () {
+Live.prototype.collidingInsects = function (score) {
     if(this.live>1){
         this.live -= 1;
     }else{
         alert("游戏结束");
+        this.reset();
+        score.reset();
     }
 };
 //玩家吃到爱心
@@ -25,3 +27,7 @@ Live.prototype.receiveHeart = function () {
         this.live = 5;
     }
 };
+//生命初始化和重置
+Live.prototype.reset = function () {
+    this.live = 3;
+}

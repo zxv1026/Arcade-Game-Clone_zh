@@ -1,5 +1,5 @@
 var Score = function () {
-    this.score = 0;
+    this.reset();
 };
 //渲染分数
 Score.prototype.render = function () {
@@ -48,4 +48,8 @@ Score.prototype.receiveGemOrange = function () {
 //玩家吃到星
 Score.prototype.receiveStar = function () {
     this.score += 30;
+};
+//分数初始化和重置
+Score.prototype.reset = function () {
+    this.score = 0;
 };

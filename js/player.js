@@ -76,9 +76,9 @@ Player.prototype.isConficted = function (enemies) {
     for (const enemy of enemies) {
         if(this.y == enemy.y){
             if (Math.abs(this.x - enemy.x) < 80){
-                live.collidingInsects();
                 score.collidingInsects();
                 this.reset();
+                live.collidingInsects(score);
             }
         }
     }

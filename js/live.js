@@ -21,4 +21,7 @@ Live.prototype.collidingInsects = function () {
 //玩家吃到爱心
 Live.prototype.receiveHeart = function () {
     this.live += 1;
+    if(this.live>5){
+        this.live = 5;
+    }
 }

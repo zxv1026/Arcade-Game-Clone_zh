@@ -101,12 +101,16 @@ Player.prototype.isConficted_T = function (allTreasure) {
                     live.receiveHeart();
                 } else if (allTreasure[i].id == 1) {
                     score.receiveKey();
+                    player.receiveKey(allObstacle);
                 } else if (allTreasure[i].id == 2) {
                     score.receiveGemBlue();
+                    player.receiveGemBlue(allEnemies);
                 } else if (allTreasure[i].id == 3) {
                     score.receiveGemGreen();
+                    player.receiveGemGreen(allEnemies);
                 } else if (allTreasure[i].id == 4) {
                     score.receiveGemOrange();
+                    player.receiveGemOrange(allEnemies);
                 } else if (allTreasure[i].id == 5) {
                     score.receiveStar();
                 }
@@ -120,4 +124,48 @@ Player.prototype.isConficted_T = function (allTreasure) {
 Player.prototype.reset = function () {
     this.x = COL_WIDTH * 2;
     this.y = ROW_WIDTH * 5;
+};
+//算2点之间的距离
+function Distance(x1,y1,x2,y2) {
+    var a = Math.abs(x1 - x2);
+    var b = Math.abs(y1 - y2);
+    var s = Math.pow((a * a + b * b), 0.5);
+    return s;
+}
+//玩家吃掉钥匙
+Player.prototype.receiveKey = function (allObstacle) {
+    if(allObstacle.length>0){
+        var distance = Distance(this.x, this.y, allObstacle[0].x, allObstacle[0].y);
+        var coordinate = 0;
+    }
+    for (let i = 0; i < allObstacle.length; i++) {
+        var d = Distance(this.x, this.y, allObstacle[i].x, allObstacle[i].y);
+        if (distance > d)
+        {
+            distance = d;
+            coordinate = i;
+        }
+        if(i == allObstacle.length-1){
+            position[allObstacle[coordinate].y / ROW_WIDTH][allObstacle[coordinate].x / COL_WIDTH] = true;
+            allObstacle.splice(coordinate, 1);
+        }
+    }
+};
+//玩家吃到蓝宝石
+Player.prototype.receiveGemBlue = function (enemies) {
+    for (const enemy of enemies) {
+        enemy.x = -COL_WIDTH * 2;
+    }
+};
+//玩家吃到绿宝石
+Player.prototype.receiveGemGreen = function (enemies) {
+    for (const enemy of enemies) {
+        enemy.speed *= 2;
+    }
+};
+//玩家吃到黄宝石
+Player.prototype.receiveGemOrange = function (enemies) {
+    for (const enemy of enemies) {
+        enemy.speed /= 2;
+    }
 };

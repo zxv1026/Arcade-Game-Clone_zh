@@ -47,5 +47,5 @@ Score.prototype.receiveGemOrange = function () {
 };
 //玩家吃到星
 Score.prototype.receiveStar = function () {
-    this.score += 3;
+    this.score += 30;
 };

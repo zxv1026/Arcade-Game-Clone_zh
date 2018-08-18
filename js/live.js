@@ -24,4 +24,4 @@ Live.prototype.receiveHeart = function () {
     if(this.live>5){
         this.live = 5;
     }
-}
+};

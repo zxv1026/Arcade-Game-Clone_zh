@@ -18,7 +18,7 @@ Enemy.prototype.reset = function () {
     this.x = -COL_WIDTH;
     this.y = (Math.round(Math.random() * 3) + 1) * ROW_WIDTH;
     this.speed = Math.random() * 100 + 50;
-}
+};
 // 此为游戏必须的函数，用来更新敌人的位置
 // 参数: dt ，表示时间间隙
 Enemy.prototype.update = function (dt) {

@@ -1,9 +1,5 @@
 //道具
 var Prop = function () {
-    this.reset();
-};
-//道具的位置
-Prop.prototype.reset = function () {
     //防止道具重叠，防止道具与玩家的位置重叠
     do {
         var col = Math.round(Math.random() * 4);

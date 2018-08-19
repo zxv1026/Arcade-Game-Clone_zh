@@ -1,5 +1,6 @@
 // 现在实现你自己的玩家类
 // 这个类需要一个 update() 函数， render() 函数和一个 handleInput()函数
+var x, y;
 var Player = function () {
     this.reset();
     this.allSprite = [

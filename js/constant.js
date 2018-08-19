@@ -10,4 +10,3 @@ for(let i = 0 ; i<6;i++){
         position[i][j] = true;
     }
 }
-var x,y;

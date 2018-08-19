@@ -20,7 +20,7 @@ var Obstacle = function () {
 };
 Obstacle.prototype = new Prop();
 Obstacle.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x , this.y-20);
+    ctx.drawImage(Resources.get(this.sprite), this.x+10 , this.y,80,136);
 };
 //宝物
 var Treasure = function () {
@@ -51,5 +51,5 @@ var Treasure = function () {
 };
 Treasure.prototype = new Prop();
 Treasure.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y-15);
+    ctx.drawImage(Resources.get(this.sprite), this.x+22, this.y+20,60,102);
 };

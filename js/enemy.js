@@ -30,7 +30,18 @@ Enemy.prototype.update = function (dt) {
         this.reset();
     }
 };
-
+//虫子移到最左侧
+Enemy.prototype.moveLeft = function (i) {
+    this.x = -COL_WIDTH * 2;
+}
+//加快虫子速度
+Enemy.prototype.pickUpSpeed = function (i) {
+    this.speed *= i;
+}
+//减慢虫子速度
+Enemy.prototype.slowSpeed = function (i) {
+    this.speed /= i;
+}
 // 此为游戏必须的函数，用来在屏幕上画出敌人，
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y-20);

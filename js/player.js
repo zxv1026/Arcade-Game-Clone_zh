@@ -6,7 +6,7 @@ var Player = function () {
 };
 //更新玩家相关数据
 Player.prototype.update = function () {
-    this.isConfictedTreasure(allTreasure);
+    this.isConfictedTreasure(allTreasure,allEnemies);
     this.isConficted(allEnemies);
 };
 //渲染玩家相关数据
@@ -95,7 +95,7 @@ Player.prototype.isConfictedObstacles = function (obstacles) {
     return false;
 };
 //检查与宝物的碰撞
-Player.prototype.isConfictedTreasure = function (allTreasure) {
+Player.prototype.isConfictedTreasure = function (allTreasure,enemies) {
     for (let i=0;i<allTreasure.length;i++) {
         if (this.y == allTreasure[i].y) {
             if (Math.abs(this.x - allTreasure[i].x) < 80) {
@@ -106,13 +106,19 @@ Player.prototype.isConfictedTreasure = function (allTreasure) {
                     player.receiveKey(allObstacle);
                 } else if (allTreasure[i].id == 2) {
                     score.receiveGemBlue();
-                    player.receiveGemBlue(allEnemies);
+                    for (const enemy of enemies) {
+                        enemy.moveLeft();
+                    }
                 } else if (allTreasure[i].id == 3) {
                     score.receiveGemGreen();
-                    player.receiveGemGreen(allEnemies);
+                    for (const enemy of enemies) {
+                        enemy.pickUpSpeed(2);
+                    }
                 } else if (allTreasure[i].id == 4) {
                     score.receiveGemOrange();
-                    player.receiveGemOrange(allEnemies);
+                    for (const enemy of enemies) {
+                        enemy.slowSpeed(2);
+                    }
                 } else if (allTreasure[i].id == 5) {
                     score.receiveStar();
                 }
@@ -151,24 +157,6 @@ Player.prototype.receiveKey = function (allObstacle) {
             position[allObstacle[coordinate].y / ROW_WIDTH][allObstacle[coordinate].x / COL_WIDTH] = true;
             allObstacle.splice(coordinate, 1);
         }
-    }
-};
-//玩家吃到蓝宝石
-Player.prototype.receiveGemBlue = function (enemies) {
-    for (const enemy of enemies) {
-        enemy.x = -COL_WIDTH * 2;
-    }
-};
-//玩家吃到绿宝石
-Player.prototype.receiveGemGreen = function (enemies) {
-    for (const enemy of enemies) {
-        enemy.speed *= 2;
-    }
-};
-//玩家吃到黄宝石
-Player.prototype.receiveGemOrange = function (enemies) {
-    for (const enemy of enemies) {
-        enemy.speed /= 2;
     }
 };
 //选择人物

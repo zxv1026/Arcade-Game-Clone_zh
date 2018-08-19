@@ -6,7 +6,7 @@ var Player = function () {
 };
 //更新玩家相关数据
 Player.prototype.update = function () {
-    this.isConficted_T(allTreasure);
+    this.isConfictedTreasure(allTreasure);
     this.isConficted(allEnemies);
 };
 //渲染玩家相关数据
@@ -58,7 +58,7 @@ Player.prototype.handleInput = function (Keys) {
         default:
             return;
     }
-    if (this.isConficted_O(allObstacle)) {
+    if (this.isConfictedObstacles(allObstacle)) {
         this.x = lastx;
         this.y = lasty;
         //防止玩家与障碍物碰撞还继续加分数
@@ -86,7 +86,7 @@ Player.prototype.isConficted = function (enemies) {
     }
 };
 //检查与障碍物的碰撞
-Player.prototype.isConficted_O = function (obstacles) {
+Player.prototype.isConfictedObstacles = function (obstacles) {
     for (const obstacle of obstacles) {
         if (this.y == obstacle.y && this.x == obstacle.x) {
             return true;
@@ -95,7 +95,7 @@ Player.prototype.isConficted_O = function (obstacles) {
     return false;
 };
 //检查与宝物的碰撞
-Player.prototype.isConficted_T = function (allTreasure) {
+Player.prototype.isConfictedTreasure = function (allTreasure) {
     for (let i=0;i<allTreasure.length;i++) {
         if (this.y == allTreasure[i].y) {
             if (Math.abs(this.x - allTreasure[i].x) < 80) {

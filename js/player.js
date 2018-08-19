@@ -169,3 +169,28 @@ Player.prototype.receiveGemOrange = function (enemies) {
         enemy.speed /= 2;
     }
 };
+//选择人物
+function selectPlayer1() {
+    player.sprite = 'images/char-boy.png';
+    player.render();
+}
+
+function selectPlayer2() {
+    player.sprite = 'images/char-cat-girl.png';
+    player.render();
+}
+
+function selectPlayer3() {
+    player.sprite = 'images/char-horn-girl.png';
+    player.render();
+}
+
+function selectPlayer4() {
+    player.sprite = 'images/char-pink-girl.png';
+    player.render();
+}
+
+function selectPlayer5() {
+    player.sprite = 'images/char-princess-girl.png';
+    player.render();
+}

@@ -15,7 +15,7 @@ Live.prototype.collidingInsects = function (score) {
     if(this.live>1){
         this.live -= 1;
     }else{
-        alert("游戏结束");
+        alert("游戏结束，"+"本次得分：" +score.score);
         this.reset();
         score.reset();
     }

@@ -1,4 +1,11 @@
 //道具
+var position = new Array();
+for (let i = 0; i < 6; i++) {
+    position[i] = new Array();
+    for (let j = 0; j < 5; j++) {
+        position[i][j] = true;
+    }
+}
 var Prop = function () {
     //防止道具重叠，防止道具与玩家的位置重叠
     do {

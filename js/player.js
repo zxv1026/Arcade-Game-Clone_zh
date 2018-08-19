@@ -62,7 +62,9 @@ Player.prototype.handleInput = function (Keys) {
         this.x = lastx;
         this.y = lasty;
         //防止玩家与障碍物碰撞还继续加分数
-        score.minusPoints();
+        if (this.y < ROW_WIDTH * (numRow - 1)){
+            score.minusPoints();
+        }
     }
     if (this.x >= 0 && this.x <= COL_WIDTH * (numCol - 1) 
     && this.y >0 && this.y < ROW_WIDTH * (numRow - 1) ) {

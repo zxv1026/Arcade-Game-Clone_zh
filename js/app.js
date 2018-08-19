@@ -4,7 +4,7 @@
 var allEnemies = [new Enemy(), new Enemy(), new Enemy(), new Enemy(), new Enemy()];
 var player = new Player();
 var score = new Score();
-var live = new Live();
+var life = new Life();
 var allTreasure = [];
 var allObstacle = [];
 function addObstacle() {

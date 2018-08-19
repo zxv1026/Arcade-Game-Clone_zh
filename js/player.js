@@ -80,7 +80,7 @@ Player.prototype.isConficted = function (enemies) {
             if (Math.abs(this.x - enemy.x) < 80){
                 score.collidingInsects();
                 this.reset();
-                live.collidingInsects(score);
+                life.collidingInsects(score);
             }
         }
     }
@@ -100,7 +100,7 @@ Player.prototype.isConfictedTreasure = function (allTreasure,enemies) {
         if (this.y == allTreasure[i].y) {
             if (Math.abs(this.x - allTreasure[i].x) < 80) {
                 if (allTreasure[i].id == 0) {
-                    live.receiveHeart();
+                    life.receiveHeart();
                 } else if (allTreasure[i].id == 1) {
                     score.receiveKey();
                     player.receiveKey(allObstacle);

@@ -2,7 +2,14 @@
 // 这个类需要一个 update() 函数， render() 函数和一个 handleInput()函数
 var Player = function () {
     this.reset();
-    this.sprite = 'images/char-boy.png';
+    this.allSprite = [
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png'
+    ]
+    this.sprite = this.allSprite[0];
 };
 //更新玩家相关数据
 Player.prototype.update = function () {
@@ -160,27 +167,7 @@ Player.prototype.receiveKey = function (allObstacle) {
     }
 };
 //选择人物
-function selectPlayer1() {
-    player.sprite = 'images/char-boy.png';
-    player.render();
-}
-
-function selectPlayer2() {
-    player.sprite = 'images/char-cat-girl.png';
-    player.render();
-}
-
-function selectPlayer3() {
-    player.sprite = 'images/char-horn-girl.png';
-    player.render();
-}
-
-function selectPlayer4() {
-    player.sprite = 'images/char-pink-girl.png';
-    player.render();
-}
-
-function selectPlayer5() {
-    player.sprite = 'images/char-princess-girl.png';
-    player.render();
-}
+Player.prototype.changePlayer = function (i) {
+    this.sprite = this.allSprite[i];
+    this.render();
+};

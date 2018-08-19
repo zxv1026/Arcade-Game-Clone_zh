@@ -6,19 +6,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="left">
-        <dl>
-            <dt>角色选择<img src="images/left/select_xl01.png"></dt>
-            <dd class="first_dd"><img src="images/char-boy.png" alt="char-boy" onclick="selectPlayer1()"></dd>
-            <dd><img src="images/char-cat-girl.png" alt="char-cat-girl" onclick="selectPlayer2()"></dd>
-            <dd><img src="images/char-horn-girl.png" alt="char-horn-girl" onclick="selectPlayer3()"></dd>
-            <dd><img src="images/char-pink-girl.png" alt="char-pink-girl" onclick="selectPlayer4()"></dd>
-            <dd><img src="images/char-princess-girl.png" alt="char-princess-girl" onclick="selectPlayer5()"></dd>
-        </dl>
-        <dl>
-            <dt onclick="alert('游戏目标 \n 玩家通过上下左右四个方向键，操纵角色避开甲虫，到达。每次过河会有一定积分奖励，获取更高积分。 \n \n 游戏规则 \n 玩家在初始位置这一行上移动不加分。在其上面的位置上移动，每移动一个地方加1分，到达河流加10分。吃到相应的道具，有相应的积分。玩家与虫子相撞，玩家生命减1，积分减5。 \n \n 道具功能 \n 石头：阻止玩家移动 \n 爱心：增加玩家生命（上限为5条）\n 钥匙：消除离玩家最近的一块石头,每吃到积分加3分 \n 蓝宝石：清空虫子（把所有虫子移动到屏幕最左侧）,每吃到积分加3分 \n 绿宝石：增加虫子的速度,每吃到积分加3分 \n 黄宝石：减慢虫子的速度,每吃到积分加3分 \n 星星：增加大量分数 ')">游戏说明</dt>
-        </dl>
-    </div>
     <script src="js/resources.js"></script>
     <script src="js/constant.js"></script>
     <script src="js/enemy.js"></script>
@@ -28,25 +15,5 @@
     <script src="js/prop.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $(".left dd").hide();
-            $(".left dt").click(function () {
-                $(".left dt").css({
-                    "background-color": "#3992d0"
-                })
-                $(this).css({
-                    "background-color": "#317eb4"
-                });
-                $(this).parent().find('dd').removeClass("menu_chioce");
-                $(".left dt img").attr("src", "images/left/select_xl01.png");
-                $(".left dt img").parent().find('img').attr("src","images/left/select_xl.png");
-                $(".menu_chioce").slideUp();
-                $(this).parent().find('dd').slideToggle();
-                $(this).parent().find('dd').addClass("menu_chioce");
-            });
-        })
-    </script>
 </body>
 </html>

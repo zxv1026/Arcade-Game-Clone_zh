@@ -23,7 +23,12 @@ setInterval("addObstacle()", "7000");
 setInterval("addTreasure()", "5000");
 // 这段代码监听游戏玩家的键盘点击事件并且代表将按键的关键数字送到 Player.handleInput()
 // 方法里面。你不需要再更改这段代码了。
+var num = 1;
 document.addEventListener('keyup', function(e) {
+    if(e.keyCode == 85){
+        player.changePlayer(num%5);
+        num++;
+    }
     var allowedKeys = {
         37: 'left',
         38: 'up',

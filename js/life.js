@@ -4,16 +4,20 @@ var Life = function () {
 };
 //渲染玩家相关数据
 Life.prototype.render = function () {
-    // ctx.fillRect(COL_WIDTH * 5 - 30 * this.life, 5, COL_WIDTH * 5, 30);
-    ctx.clearRect(COL_WIDTH * 5 - 30 * (this.life+1), 5, COL_WIDTH * 5, 30);
-    for(let i = 1; i<= this.life ; i++){
-        ctx.drawImage(Resources.get(this.sprite), COL_WIDTH * 5 - 30 * i, 0, 101 / 4, 171 / 4);
+    if(this.needRefresh){
+        // ctx.fillRect(COL_WIDTH * 5 - 30 * this.life, 5, COL_WIDTH * 5, 30);
+        ctx.clearRect(COL_WIDTH * 5 - 30 * (this.life + 1), 5, COL_WIDTH * 5, 30);
+        for (let i = 1; i <= this.life; i++) {
+            ctx.drawImage(Resources.get(this.sprite), COL_WIDTH * 5 - 30 * i, 0, 101 / 4, 171 / 4);
+        }
+        this.needRefresh = false;
     }
 };
 //玩家与虫子碰撞，生命改变
 Life.prototype.collidingInsects = function (score) {
     if(this.life>1){
         this.life -= 1;
+        this.needRefresh = true;
     }else{
         alert("游戏结束，"+"本次得分：" +score.score);
         this.reset();
@@ -26,8 +30,10 @@ Life.prototype.receiveHeart = function () {
     if(this.life>5){
         this.life = 5;
     }
+    this.needRefresh = true;
 };
 //生命初始化和重置
 Life.prototype.reset = function () {
     this.life = 3;
-}
+    this.needRefresh = true;
+};
